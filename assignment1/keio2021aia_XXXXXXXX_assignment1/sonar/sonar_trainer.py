@@ -9,8 +9,10 @@ class Sonar_Trainer:
         self.loss = ploss
 
     def accuracy(self, data):
-
-        return YOUR_CODE
+        #calculating number of correct predictions out of total data by giving 1 if predicted value and label value are the same, summing up all the correct predictions and dividing by the total data size
+        #return 100*float(sum([1 for x, y in data if self.model.predict(x) == y]))/float(len(data))
+        return 100*np.mean([1 if self.model.predict(x) == y else 0 for x, y in data]) 
+        
 
     def train(self, lr, ne):
 
@@ -25,7 +27,14 @@ class Sonar_Trainer:
             J = 0
             for x, y in self.dataset:
 
-                YOUR_CODE
+                x = np.array(x)
+                yhat = self.model(x)
+                #calling ploss by passing the predicted value and actual value and summing up the total loss for entire data 
+                J+=self.loss(self.model.predict(x),y)
+                #changing the model weights based on the difference between actual and predicted value
+                self.model.w += lr*(y-yhat)*x
+                #changing bias based on the difference between actual and predicted value
+                self.model.b += lr*(y-yhat)
 
             J /= len(self.dataset)
             

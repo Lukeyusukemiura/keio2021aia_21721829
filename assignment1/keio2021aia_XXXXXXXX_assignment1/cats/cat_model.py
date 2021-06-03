@@ -2,7 +2,7 @@ from . import *
 
 class Cat_Model:
 
-    def __init__(self, dimension=YOUR_CODE, weights=None, bias=None, activation=(lambda x: x), predict=lrpredict):
+    def __init__(self, dimension=1, weights=None, bias=None, activation=(lambda x: x), predict=lrpredict):
 
         self._dim = dimension
         self.w = weights or np.random.normal(size=self._dim)
@@ -26,7 +26,7 @@ class Cat_Model:
 
         yhat = None
 
-        YOUR_CODE
+        yhat = self._a(np.dot(self.w,np.arrray(x)) + self.b)
             
         return yhat
     

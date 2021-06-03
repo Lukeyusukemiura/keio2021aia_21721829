@@ -1,8 +1,9 @@
 from . import *
 
-class Sonar_Model:
 
-    def __init__(self, dimension=YOUR_CODE, weights=None, bias=None, activation=(lambda x: x), predict=ppredict):
+class Sonar_Model:
+    #initializing the dimension
+    def __init__(self, dimension=1, weights=None, bias=None, activation=(lambda x: x), predict=ppredict):
 
         self._dim = dimension
         self.w = weights or np.random.normal(size=self._dim)
@@ -20,8 +21,8 @@ class Sonar_Model:
         \tActivation: %s" % (self._dim, self.b, self.w, self._a.__name__)
 
     def __call__(self, x):
-
-        yhat = YOUR_CODE
+        #getting the predicted value and returing the predicted value of model
+        yhat = self._a(np.dot(self.w, np.array(x)) + self.b)
 
         return yhat
 
