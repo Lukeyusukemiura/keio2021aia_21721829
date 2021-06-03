@@ -101,7 +101,22 @@ class Sonar_Data:
                 
         self.data = []
 
-        YOUR_CODE
+        self._i = 0
+        with open('/Users/HARU/lecture/data/sonar_data.pkl', mode='rb') as f:
+            mm = pkl.load(f) # dataset is dictionary
+
+        value = list(mm.values())
+        #key = list(mm.keys())
+        m = list(value[0]) # 111sample, vector of length 60
+        #m = mvalue.flatten() #vector of x, label is mine
+        r = list(value[1]) # 97sample, vector of length 60
+        #r = rvalue.flatten() #vector of x, label is rock
+        mdata = [(x, 1) for x in m]
+        rdata = [(x, 0) for x in r]
+        #xym = [[val, 1] for val in m]
+        #xyr = [[val, 0] for val in r]
+        #combine
+        self.data = mdata + rdata #data = [[vec.x1, y1], ..., [vec.xn, yn]] n=111+97
 
         self.shuffle()
 
@@ -111,7 +126,7 @@ class Sonar_Data:
 
     def __next__(self):
         
-        YOUR_CODE
+        return self.data
 
     def shuffle(self):
         

@@ -1,7 +1,7 @@
 from . import *
 
 class Cat_Model:
-
+    #initializations
     def __init__(self, dimension=1, weights=None, bias=None, activation=(lambda x: x), predict=lrpredict):
 
         self._dim = dimension
@@ -23,10 +23,10 @@ class Cat_Model:
         \tActivation: %s" % (self._dim, self.b, self.w, self._a.__name__)
 
     def __call__(self, x):
-
+        
         yhat = None
-
-        yhat = self._a(np.dot(self.w,np.arrray(x)) + self.b)
+       
+        yhat = self._a(np.dot(self.w, np.array(x)) + self.b)
             
         return yhat
     
